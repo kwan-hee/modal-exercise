@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+![2022-09-23_130502](https://user-images.githubusercontent.com/80756638/191890565-275080cc-013d-4431-a252-4e80460d45d0.jpg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+```C
+const ErrorModal = (props) => {
+    return (
+        <div>
+            <div className={classes.backdrop} onClick={props.onConfirm}>
+                <Card className={classes.modal}>
+                    <header className={classes.header}>
+                        <h2>{props.title}</h2>
+                    </header>
+                    <div className={classes.content}>
+                        <p>{props.content}</p>
+                    </div>
+                    <footer className={classes.actions}>
+                        <Button onClick={props.onConfirm}>Okay</Button>
+                    </footer>
+                </Card>
+            </div>
+        </div>
+    );
+};
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+main
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```C
+ return (
+        <div>
+            {error && <ErrorModal title={error.title} content={error.content}
+                 onConfirm={errorHandler}
+            /> } 
+                               
+```
+에러가 날 경우 ErrorModal 창을 나오게 하고  나온 모달창을 닫게 하는 방법은  onConfirm 인데  이것은 ErrorModal 컴퍼넌트에서 Button 컴퍼넌트의 onClick 을 누르면 props를 타고 on
+Confirm으로 오고 이 props가 main의 onConfirm을 통해 비록 버튼이 main의 ErrorModal에 없을지라도 Button 역할을 해 errorHandler 함수로 가게끔 하였다. 
